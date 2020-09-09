@@ -6,7 +6,7 @@ This code quiz application is created using HTML, CSS, and JavaScript. The quiz 
 
 This assignment is deployed to Github page and the link of the application can be seen here: 
 
-
+https://ydeek91.github.io/QuizCode/
 
 
 
