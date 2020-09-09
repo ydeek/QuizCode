@@ -1,7 +1,7 @@
 
 // variables are decleared here
 var highScore = document.querySelector("#highScore");
-var previousPage = document.querySelector("#previouspage");
+var previousPage = document.querySelector("#previousPage");
 var remove = document.querySelector("#remove");
 
 // to clear scores event listtener is added
@@ -16,7 +16,7 @@ everyScore = JSON.parse(everyScore);
 if (everyScore !== null) {
 
     for (var i = 0; i < everyScore.length; i++) {
-        
+
 
         var createLi = document.createElement("li");
         createLi.textContent = everyScore[i].initials + " " + everyScore[i].score;

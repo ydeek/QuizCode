@@ -1,5 +1,5 @@
 
-// Var with array and object for questions 
+//variable questions is declared here objects and arrays for questions
 var questions = [
     {
         title: "Inside which HTML element do we put the JavaScript?:",
@@ -7,9 +7,9 @@ var questions = [
         correctAnswer: "<script>"
     },
     {
-        title: "The condition in an if / else statement is enclosed within ____.",
-        possibleAnswers: ["quotes", "curly brackets", "parentheses", "square brackets"],
-        correctAnswer: "parentheses"
+        title: " Which of the following attribute can hold the JavaScript version?",
+        possibleAnswers: ["Version", "Script", "Language", "None of the above"],
+        correctAnswer: "Language"
     },
     {
         title: "Which of the following code creates an object?",
@@ -37,29 +37,28 @@ var questions = [
         correctAnswer: "Math.round(7.25) "
     },
 ];
-// variables are declared 
+
 var score = 0;
 var questionIndex = 0;
 
-// Start working code 
-// Declared variables
+// working code starts here and some variables are declared here 
 var quizContent = document.querySelector("#quizContent");
 var wrapper = document.querySelector("#wrapper");
 var currentTime = document.querySelector("#currentTime");
 var timer = document.querySelector("#startingTime");
 
-// Seconds left is 15 seconds per question:
+// time and seconds left for users 
 var secondsLeft = 80;
-// Holds interval time
 var holdInterval = 0;
-// Holds penalty time
+// 8 seconds penalty for every wrong answer. 
 var penalty = 8;
-// Creates new element
+
 var ulCreate = document.createElement("ul");
 
-// Triggers timer on button, shows user a display on the screen
+
+
 timer.addEventListener("click", function () {
-    // We are checking zero because its originally set to zero
+
     if (holdInterval === 0) {
         holdInterval = setInterval(function () {
             secondsLeft--;
@@ -75,12 +74,10 @@ timer.addEventListener("click", function () {
     render(questionIndex);
 });
 
-// Renders questions and choices to page: 
 function render(questionIndex) {
-    // Clears existing data 
     quizContent.innerHTML = "";
     ulCreate.innerHTML = "";
-    // Appends question title only
+    // question title is appended here
     var userQuestion = questions[questionIndex].title;
     var userChoices = questions[questionIndex].possibleAnswers;
     console.log(userQuestion)
@@ -94,7 +91,7 @@ function render(questionIndex) {
         listItem.addEventListener("click", (compare));
     })
 }
-// Event to compare choices with answer
+// created event to compare answers and choices 
 function compare(event) {
     var element = event.target;
 
@@ -102,23 +99,23 @@ function compare(event) {
 
         var makeDiv = document.createElement("div");
         makeDiv.setAttribute("id", "makeDiv");
-        // Correct condition 
+        // right condition 
         if (element.textContent == questions[questionIndex].correctAnswer) {
             score++;
             makeDiv.textContent = "You Got it! The right answer is:  " + questions[questionIndex].correctAnswer;
-            // Correct condition 
+            // right condition 
         } else {
-            // Will deduct -5 seconds off secondsLeft for wrong answers
+
             secondsLeft = secondsLeft - penalty;
             makeDiv.textContent = "Opps! The right answer is:  " + questions[questionIndex].correctAnswer;
         }
 
     }
-    // Question Index determines number question user is on
+    // Question Index to determine what question number is the user currently on 
     questionIndex++;
 
     if (questionIndex >= questions.length) {
-        // All done will append last page with user stats
+
         allDone();
         makeDiv.textContent = "End of quiz!" + " " + "You got  " + score + "/" + questions.length + " Correct!";
     } else {
@@ -127,25 +124,26 @@ function compare(event) {
     quizContent.appendChild(makeDiv);
 
 }
-// All done will append last page
+
 function allDone() {
     quizContent.innerHTML = "";
     currentTime.innerHTML = "";
 
-    // Heading:
+
     var makeH1 = document.createElement("h1");
     makeH1.setAttribute("id", "makeH1");
     makeH1.textContent = " Quiz is Over!"
 
     quizContent.appendChild(makeH1);
 
-    // Paragraph
+
     var makeP = document.createElement("p");
     makeP.setAttribute("id", "makeP");
 
     quizContent.appendChild(makeP);
 
-    // Calculates time remaining and replaces it with score
+    //time remaining is calculated here
+    //replace the remaing time with score 
     if (secondsLeft >= 0) {
         var timeRemaining = secondsLeft;
         var makeP2 = document.createElement("p");
@@ -155,14 +153,14 @@ function allDone() {
         quizContent.appendChild(makeP2);
     }
 
-    // Label
+    // created Label
     var makeLabel = document.createElement("label");
     makeLabel.setAttribute("id", "makeLabel");
     makeLabel.textContent = "Type initials here: ";
 
     quizContent.appendChild(makeLabel);
 
-    // input
+    //created input
     var makeInput = document.createElement("input");
     makeInput.setAttribute("type", "text");
     makeInput.setAttribute("id", "initials");
@@ -170,7 +168,7 @@ function allDone() {
 
     quizContent.appendChild(makeInput);
 
-    // submit
+    // created submit
     var makeSubmit = document.createElement("button");
     makeSubmit.setAttribute("type", "submit");
     makeSubmit.setAttribute("id", "Submit");
@@ -178,7 +176,7 @@ function allDone() {
 
     quizContent.appendChild(makeSubmit);
 
-    // Event listener to capture initials and local storage for initials and score
+    // Event listenr here is for storing the initials and scored in local storage
     makeSubmit.addEventListener("click", function () {
         var initials = makeInput.value;
 
@@ -201,7 +199,7 @@ function allDone() {
             everyScore.push(finalScore);
             var newScore = JSON.stringify(everyScore);
             localStorage.setItem("everyScore", newScore);
-            // Travels to final page
+            // takes you to the last page 
             window.location.replace("./HighScores.html");
         }
     });
