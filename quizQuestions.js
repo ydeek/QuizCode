@@ -2,9 +2,9 @@
 // Var with array and object for questions 
 var questions = [
     {
-        title: "Commonly used data types DO NOT include:",
-        possibleAnswers: ["strings", "booleans", "alerts", "numbers"],
-        correctAnswer: "alerts"
+        title: "Inside which HTML element do we put the JavaScript?:",
+        possibleAnswers: ["<javascript>", "<js>", "<script>", "<scripting>"],
+        correctAnswer: "<script>"
     },
     {
         title: "The condition in an if / else statement is enclosed within ____.",
@@ -12,9 +12,9 @@ var questions = [
         correctAnswer: "parentheses"
     },
     {
-        title: "Arrays in Javascript can be used to store ____.",
-        possibleAnswers: ["numbers and strings", "other arrays", "booleans", "all of the above"],
-        correctAnswer: "all of the above"
+        title: "Which of the following code creates an object?",
+        possibleAnswers: ["var book = new OBJECT();", "var book = new Book();", "var book = Object();", "var book = new Object();"],
+        correctAnswer: "var book = new Object();"
     },
     {
         title: "String values must be enclosed within ____ when being assigned to variables.",
@@ -27,14 +27,14 @@ var questions = [
         correctAnswer: "console log"
     },
     {
-        title: "A very useful tool for used during development and debugging for printing content to the debugger is:",
-        possibleAnswers: ["Javascript", "terminal / bash", "for loops", "console log"],
-        correctAnswer: "console log"
+        title: "How to write an IF statement for executing some code if "i" is NOT equal to 5?:",
+        possibleAnswers: ["if i <> 5", "if (i <> 5)", "if i =! 5 then ", "if (i != 5) "],
+        correctAnswer: "if (i != 5) "
     },
     {
-        title: "A very useful tool for used during development and debugging for printing content to the debugger is:",
-        possibleAnswers: ["Javascript", "terminal / bash", "for loops", "console log"],
-        correctAnswer: "console log"
+        title: "How do you round the number 7.25, to the nearest integer?:",
+        possibleAnswers: ["Math.rnd(7.25)", "rnd(7.25)", "round(7.25)", "Math.round(7.25)"],
+        correctAnswer: "Math.round(7.25) "
     },
 ];
 // Declared variables
@@ -80,8 +80,6 @@ function render(questionIndex) {
     // Clears existing data 
     quizContent.innerHTML = "";
     ulCreate.innerHTML = "";
-    //aop through all info in array
-
     // Appends question title only
     var userQuestion = questions[questionIndex].title;
     var userChoices = questions[questionIndex].possibleAnswers;
