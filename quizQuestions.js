@@ -27,7 +27,7 @@ var questions = [
         correctAnswer: "console log"
     },
     {
-        title: "How to write an IF statement for executing some code if "i" is NOT equal to 5?:",
+        title: "How to write an IF statement for executing some code if 'i' is NOT equal to 5?:",
         possibleAnswers: ["if i <> 5", "if (i <> 5)", "if i =! 5 then ", "if (i != 5) "],
         correctAnswer: "if (i != 5) "
     },
@@ -37,7 +37,7 @@ var questions = [
         correctAnswer: "Math.round(7.25) "
     },
 ];
-// Declared variables
+// variables are declared 
 var score = 0;
 var questionIndex = 0;
 
@@ -68,7 +68,7 @@ timer.addEventListener("click", function () {
             if (secondsLeft <= 0) {
                 clearInterval(holdInterval);
                 allDone();
-                currentTime.textContent = "Time's up!";
+                currentTime.textContent = "Your Time's up!";
             }
         }, 1000);
     }
@@ -83,6 +83,7 @@ function render(questionIndex) {
     // Appends question title only
     var userQuestion = questions[questionIndex].title;
     var userChoices = questions[questionIndex].possibleAnswers;
+    console.log(userQuestion)
     quizContent.textContent = userQuestion;
     // New for each for question choices
     userChoices.forEach(function (newItem) {
@@ -99,17 +100,17 @@ function compare(event) {
 
     if (element.matches("li")) {
 
-        var createDiv = document.createElement("div");
-        createDiv.setAttribute("id", "createDiv");
+        var makeDiv = document.createElement("div");
+        makeDiv.setAttribute("id", "makeDiv");
         // Correct condition 
         if (element.textContent == questions[questionIndex].correctAnswer) {
             score++;
-            createDiv.textContent = "Correct! The answer is:  " + questions[questionIndex].correctAnswer;
+            makeDiv.textContent = "You Got it! The right answer is:  " + questions[questionIndex].correctAnswer;
             // Correct condition 
         } else {
             // Will deduct -5 seconds off secondsLeft for wrong answers
             secondsLeft = secondsLeft - penalty;
-            createDiv.textContent = "Wrong! The correct answer is:  " + questions[questionIndex].correctAnswer;
+            makeDiv.textContent = "Opps! The right answer is:  " + questions[questionIndex].correctAnswer;
         }
 
     }
@@ -119,11 +120,11 @@ function compare(event) {
     if (questionIndex >= questions.length) {
         // All done will append last page with user stats
         allDone();
-        createDiv.textContent = "End of quiz!" + " " + "You got  " + score + "/" + questions.length + " Correct!";
+        makeDiv.textContent = "End of quiz!" + " " + "You got  " + score + "/" + questions.length + " Correct!";
     } else {
         render(questionIndex);
     }
-    quizContent.appendChild(createDiv);
+    quizContent.appendChild(makeDiv);
 
 }
 // All done will append last page
@@ -132,54 +133,54 @@ function allDone() {
     currentTime.innerHTML = "";
 
     // Heading:
-    var createH1 = document.createElement("h1");
-    createH1.setAttribute("id", "createH1");
-    createH1.textContent = "All Done!"
+    var makeH1 = document.createElement("h1");
+    makeH1.setAttribute("id", "makeH1");
+    makeH1.textContent = " Quiz is Over!"
 
-    quizContent.appendChild(createH1);
+    quizContent.appendChild(makeH1);
 
     // Paragraph
-    var createP = document.createElement("p");
-    createP.setAttribute("id", "createP");
+    var makeP = document.createElement("p");
+    makeP.setAttribute("id", "makeP");
 
-    quizContent.appendChild(createP);
+    quizContent.appendChild(makeP);
 
     // Calculates time remaining and replaces it with score
     if (secondsLeft >= 0) {
         var timeRemaining = secondsLeft;
-        var createP2 = document.createElement("p");
+        var makeP2 = document.createElement("p");
         clearInterval(holdInterval);
-        createP.textContent = "Your final score is: " + timeRemaining;
+        makeP.textContent = "Your final score is: " + timeRemaining;
 
-        quizContent.appendChild(createP2);
+        quizContent.appendChild(makeP2);
     }
 
     // Label
-    var createLabel = document.createElement("label");
-    createLabel.setAttribute("id", "createLabel");
-    createLabel.textContent = "Enter your initials: ";
+    var makeLabel = document.createElement("label");
+    makeLabel.setAttribute("id", "makeLabel");
+    makeLabel.textContent = "Type initials here: ";
 
-    quizContent.appendChild(createLabel);
+    quizContent.appendChild(makeLabel);
 
     // input
-    var createInput = document.createElement("input");
-    createInput.setAttribute("type", "text");
-    createInput.setAttribute("id", "initials");
-    createInput.textContent = "";
+    var makeInput = document.createElement("input");
+    makeInput.setAttribute("type", "text");
+    makeInput.setAttribute("id", "initials");
+    makeInput.textContent = "";
 
-    quizContent.appendChild(createInput);
+    quizContent.appendChild(makeInput);
 
     // submit
-    var createSubmit = document.createElement("button");
-    createSubmit.setAttribute("type", "submit");
-    createSubmit.setAttribute("id", "Submit");
-    createSubmit.textContent = "Submit";
+    var makeSubmit = document.createElement("button");
+    makeSubmit.setAttribute("type", "submit");
+    makeSubmit.setAttribute("id", "Submit");
+    makeSubmit.textContent = "Submit";
 
-    quizContent.appendChild(createSubmit);
+    quizContent.appendChild(makeSubmit);
 
     // Event listener to capture initials and local storage for initials and score
-    createSubmit.addEventListener("click", function () {
-        var initials = createInput.value;
+    makeSubmit.addEventListener("click", function () {
+        var initials = makeInput.value;
 
         if (initials === null) {
 
@@ -195,10 +196,10 @@ function allDone() {
             if (everyScore === null) {
                 everyScore = [];
             } else {
-                everyScores = JSON.parse(everyScores);
+                everyScore = JSON.parse(everyScore);
             }
             everyScore.push(finalScore);
-            var newScore = JSON.stringify(everyScores);
+            var newScore = JSON.stringify(everyScore);
             localStorage.setItem("everyScore", newScore);
             // Travels to final page
             window.location.replace("./HighScores.html");
