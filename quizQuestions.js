@@ -200,7 +200,7 @@ function allDone() {
             var newScore = JSON.stringify(everyScore);
             localStorage.setItem("everyScore", newScore);
             // takes you to the last page 
-            window.location.replace("./HighScores.html");
+            window.location.replace("./highScores.html");
         }
     });
 
