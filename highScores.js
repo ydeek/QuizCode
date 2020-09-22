@@ -6,7 +6,7 @@ var remove = document.querySelector("#remove");
 
 // to clear scores event listtener is added
 remove.addEventListener("click", function () {
-    localStorage.clear();
+    localStorage.clear(); p
     location.reload();
 });
 // 
