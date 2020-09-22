@@ -16,13 +16,6 @@ https://ydeek91.github.io/QuizCode/
 - Javascript 
 - Jquery 
 
-# Contact Information: 
-Email: yazan.deek8@gmail.com 
-
-
-
-
-
 
 
 
@@ -32,3 +25,9 @@ Email: yazan.deek8@gmail.com
 <img src="ScreenshotFour.png" alt="">
 <img src="ScreenshotFive.png" alt="">
 <img src="Screenshotsix.png" alt="">
+
+
+
+
+# Contact Information: 
+Email: yazan.deek8@gmail.com 
